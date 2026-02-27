@@ -101,6 +101,10 @@ function Weapon.Disarm(currentWeapon, noAnim)
         TriggerServerEvent('ox_inventory:updateWeapon')
 		SetPedAmmo(cache.ped, currentWeapon.hash, 0)
 
+		if currentWeapon.group == `GROUP_PETROLCAN` or currentWeapon.group == `GROUP_FIREEXTINGUISHER` then
+			SetPedInfiniteAmmoClip(cache.ped, false)
+		end
+
 		if client.weaponanims and not noAnim then
 			if cache.vehicle and vehicleIsCycle(cache.vehicle) then
 				goto skipAnim
